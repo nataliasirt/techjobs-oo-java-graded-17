@@ -49,9 +49,9 @@ public class JobTest {
     public void testToStringStartsAndEndsWithNewLine() {
         Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
                 new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        String jobString = job.toString();
-        assertEquals(System.lineSeparator(), jobString.substring(0, System.lineSeparator().length()));
-        assertEquals(System.lineSeparator(), jobString.substring(jobString.length() - System.lineSeparator().length()));
+        String jobString = job.toString(); //to store the result in jobString var
+        assertEquals(System.lineSeparator(), jobString.substring(0, System.lineSeparator().length())); //extracts the first character of jobString
+        assertEquals(System.lineSeparator(), jobString.substring(jobString.length() - System.lineSeparator().length())); //extracts the last character of jobString
     }
     //check correct formatting of fields
     @Test

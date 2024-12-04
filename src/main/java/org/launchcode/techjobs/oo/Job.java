@@ -16,10 +16,12 @@ public class Job {
     // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
     //  other five fields. The second constructor should also call the first in order to initialize
     //  the 'id' field.
+    // Constructor with no parameters (default constructor)
 public Job(){
         id = nextId;
         nextId++;
 }
+    // Constructor with parameters
 public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency){
    this();
     this.name = name;
@@ -27,12 +29,12 @@ public Job(String name, Employer employer, Location location, PositionType posit
     this.location = location;
     this.positionType = positionType;
     this.coreCompetency = coreCompetency;
-    nextId++;
 }
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
 
     @Override
+    //2 Job objects are considered equal only if their id fields are the same.
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Job)) return false;
@@ -41,8 +43,23 @@ public Job(String name, Employer employer, Location location, PositionType posit
     }
 
     @Override
+    //ensures that objects with the same id have the same hash code. same id = same hash code
     public int hashCode() {
         return Objects.hashCode(getId());
+    }
+
+    @Override
+    public String toString() {
+        if (name == null && employer == null && location == null && positionType == null && coreCompetency == null) {
+            return "OOPS! This job does not seem to exist.";
+        }
+        return System.lineSeparator() +
+                "ID: " + id + System.lineSeparator() +
+                "Name: " + (name != null && !name.isEmpty() ? name : "Data not available") + System.lineSeparator() +
+                "Employer: " + (employer != null && employer.toString() != null && !employer.toString().isEmpty() ? employer : "Data not available") + System.lineSeparator() +
+                "Location: " + (location != null && location.toString() != null && !location.toString().isEmpty() ? location : "Data not available") + System.lineSeparator() +
+                "Position Type: " + (positionType != null && positionType.toString() != null && !positionType.toString().isEmpty() ? positionType : "Data not available") + System.lineSeparator() +
+                "Core Competency: " + (coreCompetency != null && coreCompetency.toString() != null && !coreCompetency.toString().isEmpty() ? coreCompetency : "Data not available") + System.lineSeparator();
     }
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
